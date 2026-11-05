@@ -36,8 +36,7 @@ class BinaryMatrixGraph {
      * @returns {number[][]} - an array of nodes in the form of two-element arrays
      */
     neighbors(n) {
-        // Implementér denne metode
-        // ...
+        
     }
 
     identicalNodes(n,m) {
