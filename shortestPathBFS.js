@@ -24,9 +24,36 @@ function shortestPathBFS(s,t,g) {
     // Let Q be a Queue of length at least equal to the number of nodes in G.
     let q = new Queue(g.numberOfNodes());
 
-    // Implementér resten af koden herunder
-    // ...
-    
+    let addToQueue = (node) => {
+        q.enqueue(node);
+    };
+
+    addToQueue(s);
+
+    while (!q.isEmpty()) {
+        let current = q.dequeue();
+        visitedSet.add(g.key(current));
+
+        if (g.identicalNodes(current, t)) {
+            // Reconstruct path
+            let node = t;
+            while (prevMap.has(g.key(node))) {
+                path.unshift(node);
+                node = prevMap.get(g.key(node));
+            }
+            path.unshift(s);
+            return path;
+        }
+
+        for (let neighbor of g.neighbors(current)) {
+            if (!visitedSet.has(g.key(neighbor))) {
+                visitedSet.add(g.key(neighbor));
+                prevMap.set(g.key(neighbor), current);
+                addToQueue(neighbor);
+            }
+        }
+    }
+
     return path;
 }  
 
