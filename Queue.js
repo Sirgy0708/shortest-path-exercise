@@ -28,9 +28,9 @@ class Queue {
             throw new Error("Queue is full");
         }
         this.#data[this.#last] = item;
-        this.#last += 1;
+        this.#last++;
         this.#last %= this.#arraySize;
-        this.#count += 1;
+        this.#count++;
     }
 
     dequeue() {
